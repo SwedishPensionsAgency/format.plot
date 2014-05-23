@@ -1,0 +1,21 @@
+{{=<% %>=}}
+
+\begin{figure}[H]%
+  \centering%
+  \begin{minipage}{\textwidth}%
+    \captionsetup{labelformat=default}
+    \parindent0pt%
+    \centering%
+    <%#caption%>
+      \caption[<%#captionTableOfContents%><%&captionTableOfContents%><%/captionTableOfContents%><%^captionTableOfContents%><%&caption%><%/captionTableOfContents%>]{\relax{}<%&caption%><%#subcaption%>\nl{}{\mdseries\color{black}<%&subcaption%> } <%/subcaption%> }\label{fig:<%&name%> }%
+      \vskip-0.5em% 
+<%/caption%>    \includegraphics{ <%&plotPath%> }%
+<%#note%>    \\[.2ex]%
+    \begin{minipage}{\textwidth}%
+      \parindent0pt
+      \sffamily%
+      \footnotesize%
+      <%&note%>
+<%/note%>    \end{minipage}% 
+  \end{minipage}%
+\end{figure}%
