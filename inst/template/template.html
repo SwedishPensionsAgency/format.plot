@@ -1,1 +1,8 @@
-<img src="{{&plotPath}}" />
+<div class="{{class}}{{^class}}format-plot{{/class}}">
+{{#caption}}<div class="caption">
+  <span class="caption">{{caption}}</span>
+  {{#subcaption}}<span class="subcaption">{{&subcaption}}</span>
+{{/subcaption}}</div>
+{{/caption}}  <img src="{{&plotPath}}"{{#caption}} title="{{caption}}"{{/caption}}{{#alt}} alt="{{alt}}"{{/alt}} />
+{{#note}} <div class="note">{{note}}</div>
+{{/note}}</div>

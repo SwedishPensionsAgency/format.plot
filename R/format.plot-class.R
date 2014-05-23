@@ -13,7 +13,9 @@
 #' @field base54.images logical, embed images base64 encoded in output, works only in non (La)TeX output
 #' @field overwrite logical, should existing destination files be overwritten?
 #' @field fontpaths a character vector giving directories that Ghostscript will search for fonts
-
+#' 
+#' @export format.plot
+#' @exportClass format.plot
 format.plot <- setRefClass(
   "format.plot",
   fields = list(
@@ -139,7 +141,8 @@ format.plot <- setRefClass(
         plot.path <- plot.path[[1]]
       }
       
-      whisker.data <- c(list(plotPath = plot.path), .self$data)
+      whisker.data <- c(list(plotPath = plot.path, 
+                             name = .self$name), .self$data)
       return(whisker.render(template.whisker, data = whisker.data))
       
       
