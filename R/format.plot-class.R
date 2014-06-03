@@ -131,12 +131,14 @@ format.plot <- setRefClass(
         }
       }
       
+      plot.path <- .self$save()
+      
       template.whisker <- paste(readLines(template, warn = FALSE), collapse = "\n")
       
-      plot.path <- .self$save()
       
       if (type == "tex") {
         plot.path <- plot.path[["pdf"]]
+        template.whisker <- gsub("<%&plotPath%>", plot.path, template.whisker)
       } else {
         plot.path <- plot.path[[1]]
       }
