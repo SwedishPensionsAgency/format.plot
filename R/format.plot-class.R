@@ -82,7 +82,12 @@ format.plot <- setRefClass(
         device.call <- ifelse(device == "png" & .self$pdf2png, "pdf", device)
         
         do.call(device.call, c(list(tmpfile), .self$plot.options))
-        print(.self$plot)
+        if ("gtable" %in% class(.self$plot) & "grob" %in% class(.self$plot)) {
+          grid.draw(.self$plot)
+        } else {
+          print(.self$plot)
+        }
+        
         dev.off()
         
         if (device == "png" & .self$pdf2png) {
