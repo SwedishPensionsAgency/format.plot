@@ -25,8 +25,9 @@ pdf_to_png <- function(
                 " ", options, 
                 " ", "-sOutputFile=", tmpfile, 
                 " ", shQuote(file))
-  ret <- system(cmd)
-  if (ret != 0) {
+  ret <- system(cmd, intern = TRUE)
+  status = attr(ret, "status")
+  if (!is.null(status) && status != 0) {
     stop(gettextf("status %d in running command '%s'", ret, 
                   cmd), domain = NA)
   }
